@@ -56,6 +56,9 @@ export default [
     },
     {
         files: ['**/*.json'],
-        ...jsonPlugin.configs.recommended
+        ...jsonPlugin.configs.recommended,
+        rules: {
+            'json/*': ['error', { allowComments: true }]
+        }
     }
 ];
