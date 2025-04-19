@@ -1,6 +1,5 @@
 // D:\ann\Git\next-cross-stitch\eslint.config.js
 import js from '@eslint/js';
-import nextPlugin from 'eslint-config-next';
 import jsonPlugin from 'eslint-plugin-json';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
@@ -20,7 +19,6 @@ export default [
         ]
     },
     js.configs.recommended,
-    nextPlugin,
     {
         files: ['**/*.js', '**/*.jsx'],
         plugins: {
