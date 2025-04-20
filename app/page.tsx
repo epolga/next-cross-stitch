@@ -23,7 +23,7 @@ export default function Home() {
     useEffect(() => {
         async function fetchDesigns() {
             try {
-                const res = await fetch("/api/designs");
+                const res = await fetch("/api/all-designs");
                 if (!res.ok) throw new Error("Failed to fetch designs");
                 const { designs } = await res.json();
                 setDesigns(designs);
