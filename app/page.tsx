@@ -3,16 +3,17 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 
 interface Design {
-    designId: number;
-    albumId: number;
-    caption: string;
-    description: string;
-    nDownloaded: number;
-    notes: string;
-    width: number;
-    height: number;
-    text: string;
-    nPage: number;
+
+    DesignID: number;
+    AlbumID: number;
+    Caption: string;
+    Description: string;
+    NDownloaded: number;
+    Notes: string;
+    Width: number;
+    Height: number;
+    Text: string;
+    NPage: number;
 }
 
 export default function Home() {
@@ -23,13 +24,12 @@ export default function Home() {
     useEffect(() => {
         async function fetchDesigns() {
             try {
-                /*
-                const res = await fetch("/api/all-designs");
-                if (!res.ok) throw new Error("Failed to fetch designs");
-                const { designs } = await res.json();
-                 */
-                const designs: any [] = []
-                setDesigns(designs);
+               const res = await fetch("/api/all-designs");
+               if (!res.ok) throw new Error("Failed to fetch designs");
+               const designs = await res.json();
+
+               setDesigns(designs);
+               console.log(designs);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -49,11 +49,11 @@ export default function Home() {
             ) : (
                 <div className={styles.designGrid}>
                     {designs.map((design) => (
-                        <div key={design.designId} className={styles.designCard}>
-                            <h3 className={styles.designCaption}>{design.caption}</h3>
-                            <p>{design.description}</p>
-                            <p>Downloads: {design.nDownloaded}</p>
-                            <p>Size: {design.width}x{design.height}</p>
+                        <div key={design.DesignID} className={styles.designCard}>
+                            <h3 className={styles.DesignCaption}>{design.Caption}</h3>
+                            <p>{design.Description}</p>
+                            <p>Downloads: {design.NDownloaded}</p>
+                            <p>Size: {design.Width}x{design.Height}</p>
                         </div>
                     ))}
                 </div>
