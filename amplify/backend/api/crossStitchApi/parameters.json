@@ -8,6 +8,11 @@
       "LambdaFunction": "allDesignsApiLambda"
     },
     {
+      "Path": "/api/test",
+      "Method": "GET",
+      "LambdaFunction": "testLambda"
+    },
+    {
       "Path": "/api/test1",
       "Method": "GET",
       "LambdaFunction": "testLambda"
