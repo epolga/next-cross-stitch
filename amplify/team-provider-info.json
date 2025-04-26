@@ -18,7 +18,7 @@
       "function": {
         "allDesignsApiLambda": {
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
-          "s3Key": "amplify-builds/allDesignsApiLambda-46706f505337562f6f45-build.zip"
+          "s3Key": "amplify-builds/allDesignsApiLambda-475775644a426a397958-build.zip"
         }
       },
       "api": {

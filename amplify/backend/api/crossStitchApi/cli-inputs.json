@@ -1,8 +1,8 @@
 {
   "version": 1,
   "paths": {
-    "/app/all-designs": {
-      "name": "/app/all-designs",
+    "/api/all-designs": {
+      "name": "/api/all-designs",
       "lambdaFunction": "allDesignsApiLambda",
       "permissions": {
         "setting": "open"

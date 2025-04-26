@@ -28,7 +28,7 @@ const partitionKeyType = "S";
 const sortKeyName = "SK";
 const sortKeyType = "S";
 const hasSortKey = sortKeyName !== "";
-const path = "/app/all-designs";
+const path = "/app/api-designs";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
