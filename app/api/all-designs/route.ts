@@ -5,6 +5,7 @@ import {DynamoDBDocumentClient, ScanCommand} from "@aws-sdk/lib-dynamodb";
 const client = new DynamoDBClient({ region: 'us-east-1' }); // Adjust region
 const docClient = DynamoDBDocumentClient.from(client);
 import AWS from 'aws-sdk';
+import {json} from "node:stream/consumers";
 //  const client = new DynamoDBClient({ region: 'us-east-1' });
 const tableName = 'CrossStitchItems-prod';
 /*
@@ -27,8 +28,7 @@ export async function GET(request: Request) {
     // Get caller identity
     const sts = new AWS.STS();
     const identity = await sts.getCallerIdentity().promise();
-    console.log('Caller Identity:', JSON.stringify(identity, null, 2));
-    /*
+    console.log('Identity info: ' + JSON.stringify(identity));
   return NextResponse.json([ {
         designId: 100,
         albumId: 5,
@@ -42,8 +42,6 @@ export async function GET(request: Request) {
         nPage: 11,
         nGlobalPage: 3
     } ]);
-
-     */
 
     try {
         const command = new ScanCommand({
