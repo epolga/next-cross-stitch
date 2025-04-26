@@ -27,8 +27,8 @@ const tableName = 'CrossStitchItems-prod';
 export async function GET(request: Request) {
     // Get caller identity
     const sts = new AWS.STS();
-    const identity = await sts.getCallerIdentity().promise();
-    console.log('Identity info: ' + JSON.stringify(identity));
+   /* const identity = await sts.getCallerIdentity().promise();
+    console.log('Identity info: ' + JSON.stringify(identity));*/
   return NextResponse.json([ {
         designId: 100,
         albumId: 5,
