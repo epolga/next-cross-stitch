@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "allDesignsApiLambda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "testLambda"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -34,6 +42,11 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "testLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -50,6 +63,22 @@
         {
           "category": "function",
           "resourceName": "allDesignsApiLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_testLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_testLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "testLambda"
         }
       ]
     }
