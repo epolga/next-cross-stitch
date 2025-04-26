@@ -1,0 +1,16 @@
+{
+  "AppSyncApiName": "crossStitchApi",
+  "Env": "prod",
+  "Paths": [
+    {
+      "Path": "/api/all-designs",
+      "Method": "GET",
+      "LambdaFunction": "allDesignsApiLambda"
+    },
+    {
+      "Path": "/api/test1",
+      "Method": "GET",
+      "LambdaFunction": "testLambda"
+    }
+  ]
+}
