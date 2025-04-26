@@ -1,59 +1,20 @@
+// app/api/all-designs/route.ts
 import { NextResponse } from 'next/server';
-    import { DynamoDBClient, QueryCommand } from '@aws-sdk/client-dynamodb';
-    import { unmarshall } from '@aws-sdk/util-dynamodb';
-import {DynamoDBDocumentClient, ScanCommand} from "@aws-sdk/lib-dynamodb";
-const client = new DynamoDBClient({ region: 'us-east-1' }); // Adjust region
-const docClient = DynamoDBDocumentClient.from(client);
-  //  const client = new DynamoDBClient({ region: 'us-east-1' });
-    const tableName = 'CrossStitchItems';
-/*
-    async function getItemWithMaxNGlobalPage() {
-      const command = new QueryCommand({
-        TableName: tableName,
-        IndexName: 'NGlobalPageIndex',
-        KeyConditionExpression: 'EntityType = :et',
-        ExpressionAttributeValues: { ':et': { S: 'DESIGN' } },
-        ProjectionExpression: 'NGlobalPage',
-        ScanIndexForward: false,
-        Limit: 1
-      });
-
-      const result = await client.send(command);
-      return result.Items?.length ? Number(unmarshall(result.Items[0]).NGlobalPage) : -1;
+//import { callApi } from '../../lib/api';
+import { callApi } from '../../lib/api';
+export async function GET() {
+    try {
+        const data = await callApi();
+        return NextResponse.json(data);
+    } catch (error: unknown) {
+        // Narrow error to Error or handle unknown
+        const errorDetails = {
+            message: error instanceof Error ? error.message : String(error) || 'Unknown error',
+            code: error instanceof Error && 'code' in error ? error.code : 'N/A',
+            stack: error instanceof Error ? error.stack : 'N/A',
+            type: typeof error
+        };
+        console.error('API error:', errorDetails);
+        return NextResponse.json({ error: 'Failed to fetch designs', details: errorDetails }, { status: 500 });
     }
-*/
-    export async function GET(request: Request) {
-        /*
-      return NextResponse.json([ {
-            designId: 100,
-            albumId: 5,
-            caption: 'Caption',
-            description: 'Description',
-            nDownloaded: 34,
-            notes: 'note',
-            width: 31,
-            height: 535,
-            text: 'dataText',
-            nPage: 11,
-            nGlobalPage: 3
-        } ]);
-
-         */
-
-        try {
-            const command = new ScanCommand({
-                TableName: 'CrossStitchItems',
-            });
-
-            const response = await docClient.send(command);
-            const items = response.Items || []; // Always return array
-            console.log('Scan Response:', items);
-            return NextResponse.json(items);
-            //return items;
-        } catch (error) {
-            console.error('Scan failed:', error);
-            throw error;
-        }
-
-
-    }
+}

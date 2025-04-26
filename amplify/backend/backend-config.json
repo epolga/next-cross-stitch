@@ -1,0 +1,8 @@
+{
+  "storage": {
+    "CrossStitchItems": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

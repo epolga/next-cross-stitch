@@ -1,0 +1,20 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nextcrossstitch-prod-350c4-authRole",
+      "UnauthRoleArn": "arn:aws:iam::358174257684:role/amplify-nextcrossstitch-prod-350c4-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::358174257684:role/amplify-nextcrossstitch-prod-350c4-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
+      "UnauthRoleName": "amplify-nextcrossstitch-prod-350c4-unauthRole",
+      "StackName": "amplify-nextcrossstitch-prod-350c4",
+      "StackId": "arn:aws:cloudformation:us-east-1:358174257684:stack/amplify-nextcrossstitch-prod-350c4/ac314400-2260-11f0-a41d-12b4c9d12bb5",
+      "AmplifyAppId": "d2kd00wzsldo3"
+    },
+    "categories": {
+      "storage": {
+        "CrossStitchItems": {}
+      }
+    }
+  }
+}

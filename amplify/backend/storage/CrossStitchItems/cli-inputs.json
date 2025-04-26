@@ -1,0 +1,14 @@
+{
+  "resourceName": "CrossStitchItems",
+  "tableName": "CrossStitchItems",
+  "partitionKey": {
+    "fieldName": "PK",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "SK",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
