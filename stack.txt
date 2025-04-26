@@ -1,0 +1,89 @@
+{
+    "Stacks": [
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:358174257684:stack/amplify-nextcrossstitch-prod-350c4/ac314400-2260-11f0-a41d-12b4c9d12bb5",
+            "StackName": "amplify-nextcrossstitch-prod-350c4",
+            "Description": "Root Stack for AWS Amplify CLI",
+            "Parameters": [
+                {
+                    "ParameterKey": "AuthRoleName",
+                    "ParameterValue": "amplify-nextcrossstitch-prod-350c4-authRole"
+                },
+                {
+                    "ParameterKey": "DeploymentBucketName",
+                    "ParameterValue": "amplify-nextcrossstitch-prod-350c4-deployment"
+                },
+                {
+                    "ParameterKey": "UnauthRoleName",
+                    "ParameterValue": "amplify-nextcrossstitch-prod-350c4-unauthRole"
+                }
+            ],
+            "CreationTime": "2025-04-26T05:38:25.005000+00:00",
+            "LastUpdatedTime": "2025-04-26T07:30:14.449000+00:00",
+            "RollbackConfiguration": {},
+            "StackStatus": "UPDATE_COMPLETE",
+            "DisableRollback": false,
+            "NotificationARNs": [],
+            "Capabilities": [
+                "CAPABILITY_NAMED_IAM",
+                "CAPABILITY_AUTO_EXPAND"
+            ],
+            "Outputs": [
+                {
+                    "OutputKey": "AuthRoleName",
+                    "OutputValue": "amplify-nextcrossstitch-prod-350c4-authRole"
+                },
+                {
+                    "OutputKey": "UnauthRoleArn",
+                    "OutputValue": "arn:aws:iam::358174257684:role/amplify-nextcrossstitch-prod-350c4-unauthRole"
+                },
+                {
+                    "OutputKey": "AuthRoleArn",
+                    "OutputValue": "arn:aws:iam::358174257684:role/amplify-nextcrossstitch-prod-350c4-authRole"
+                },
+                {
+                    "OutputKey": "Region",
+                    "OutputValue": "us-east-1",
+                    "Description": "CloudFormation provider root stack Region",
+                    "ExportName": "amplify-nextcrossstitch-prod-350c4-Region"
+                },
+                {
+                    "OutputKey": "DeploymentBucketName",
+                    "OutputValue": "amplify-nextcrossstitch-prod-350c4-deployment",
+                    "Description": "CloudFormation provider root stack deployment bucket name",
+                    "ExportName": "amplify-nextcrossstitch-prod-350c4-DeploymentBucketName"
+                },
+                {
+                    "OutputKey": "UnauthRoleName",
+                    "OutputValue": "amplify-nextcrossstitch-prod-350c4-unauthRole"
+                },
+                {
+                    "OutputKey": "StackName",
+                    "OutputValue": "amplify-nextcrossstitch-prod-350c4",
+                    "Description": "CloudFormation provider root stack ID",
+                    "ExportName": "amplify-nextcrossstitch-prod-350c4-StackName"
+                },
+                {
+                    "OutputKey": "StackId",
+                    "OutputValue": "arn:aws:cloudformation:us-east-1:358174257684:stack/amplify-nextcrossstitch-prod-350c4/ac314400-2260-11f0-a41d-12b4c9d12bb5",
+                    "Description": "CloudFormation provider root stack name",
+                    "ExportName": "amplify-nextcrossstitch-prod-350c4-StackId"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "user:Application",
+                    "Value": "nextcrossstitch"
+                },
+                {
+                    "Key": "user:Stack",
+                    "Value": "prod"
+                }
+            ],
+            "EnableTerminationProtection": false,
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}
