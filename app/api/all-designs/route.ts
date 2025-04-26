@@ -1,62 +1,36 @@
 import { NextResponse } from 'next/server';
-import { DynamoDBClient, QueryCommand } from '@aws-sdk/client-dynamodb';
-import { unmarshall } from '@aws-sdk/util-dynamodb';
-import {DynamoDBDocumentClient, ScanCommand} from "@aws-sdk/lib-dynamodb";
-const client = new DynamoDBClient({ region: 'us-east-1' }); // Adjust region
-const docClient = DynamoDBDocumentClient.from(client);
-import AWS from 'aws-sdk';
-import {json} from "node:stream/consumers";
-//  const client = new DynamoDBClient({ region: 'us-east-1' });
-const tableName = 'CrossStitchItems-prod';
-/*
-    async function getItemWithMaxNGlobalPage() {
-      const command = new QueryCommand({
-        TableName: tableName,
-        IndexName: 'NGlobalPageIndex',
-        KeyConditionExpression: 'EntityType = :et',
-        ExpressionAttributeValues: { ':et': { S: 'DESIGN' } },
-        ProjectionExpression: 'NGlobalPage',
-        ScanIndexForward: false,
-        Limit: 1
-      });
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb';
+import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 
-      const result = await client.send(command);
-      return result.Items?.length ? Number(unmarshall(result.Items[0]).NGlobalPage) : -1;
-    }
-*/
+const client = new DynamoDBClient({ region: 'us-east-1' });
+const docClient = DynamoDBDocumentClient.from(client);
+const stsClient = new STSClient({ region: 'us-east-1' });
+const tableName = 'CrossStitchItems-prod';
+
 export async function GET(request: Request) {
-    // Get caller identity
-    const sts = new AWS.STS();
-   /* const identity = await sts.getCallerIdentity().promise();
-    console.log('Identity info: ' + JSON.stringify(identity));*/
-  return NextResponse.json([ {
-        designId: 100,
-        albumId: 5,
-        caption: 'Caption',
-        description: 'Description',
-        nDownloaded: 34,
-        notes: 'note',
-        width: 31,
-        height: 535,
-        text: 'dataText',
-        nPage: 11,
-        nGlobalPage: 3
-    } ]);
+    try {
+        console.log('Attempting to call STS getCallerIdentity');
+        const stsCommand = new GetCallerIdentityCommand({});
+        const identity = await stsClient.send(stsCommand);
+        console.log('Identity info:', JSON.stringify(identity));
+    } catch (error) {
+        console.error('STS call failed:', error);
+        return NextResponse.json({ error: 'Failed to get caller identity' }, { status: 500 });
+    }
 
     try {
+        console.log('Attempting DynamoDB scan');
         const command = new ScanCommand({
-            TableName: tableName
+            TableName: tableName,
         });
 
         const response = await docClient.send(command);
-        const items = response.Items || []; // Always return array
+        const items = response.Items || [];
         console.log('Scan Response:', items);
         return NextResponse.json(items);
-        //return items;
     } catch (error) {
-        console.error('Scan failed:', error);
-        throw error;
+        console.error('DynamoDB scan failed:', error);
+        return NextResponse.json({ error: 'DynamoDB scan failed' }, { status: 500 });
     }
-
-
 }
