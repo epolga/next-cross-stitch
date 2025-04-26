@@ -4,8 +4,11 @@ import { NextResponse } from 'next/server';
 import { callApi } from '../../lib/api';
 export async function GET() {
     try {
-        const data = await callApi();
+        /*const data = await callApi();
         return NextResponse.json(data);
+
+         */
+        return NextResponse.json("");
     } catch (error: unknown) {
         // Narrow error to Error or handle unknown
         const errorDetails = {
