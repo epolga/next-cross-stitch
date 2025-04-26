@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
-
+import { defaultProvider } from '@aws-sdk/credential-provider-node';
 // Custom logger for credential provider chain
 const credentialLogger = {
     info: (message: string) => console.log(`[CREDENTIALS] INFO: ${message}`),
@@ -11,7 +11,7 @@ const credentialLogger = {
 };
 
 // Initialize STS client with credential logging
-const credentials = fromNodeProviderChain({
+const credentials = defaultProvider({
     logger: credentialLogger,
     clientConfig: { region: 'us-east-1' },
 });
