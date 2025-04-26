@@ -4,6 +4,7 @@ import { unmarshall } from '@aws-sdk/util-dynamodb';
 import {DynamoDBDocumentClient, ScanCommand} from "@aws-sdk/lib-dynamodb";
 const client = new DynamoDBClient({ region: 'us-east-1' }); // Adjust region
 const docClient = DynamoDBDocumentClient.from(client);
+import AWS from 'aws-sdk';
 //  const client = new DynamoDBClient({ region: 'us-east-1' });
 const tableName = 'CrossStitchItems-prod';
 /*
@@ -23,6 +24,10 @@ const tableName = 'CrossStitchItems-prod';
     }
 */
 export async function GET(request: Request) {
+    // Get caller identity
+    const sts = new AWS.STS();
+    const identity = await sts.getCallerIdentity().promise();
+    console.log('Caller Identity:', JSON.stringify(identity, null, 2));
     /*
   return NextResponse.json([ {
         designId: 100,
