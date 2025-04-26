@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/app/all-designs": {
+      "name": "/app/all-designs",
+      "lambdaFunction": "allDesignsApiLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
