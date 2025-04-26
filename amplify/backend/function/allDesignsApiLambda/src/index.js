@@ -1,15 +1,42 @@
-const awsServerlessExpress = require('aws-serverless-express');
-const app = require('./app');
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+const { DynamoDBDocumentClient, ScanCommand } = require('@aws-sdk/lib-dynamodb');
 
-/**
- * @type {import('http').Server}
- */
-const server = awsServerlessExpress.createServer(app);
+const client = new DynamoDBClient({ region: 'us-east-1' });
+const docClient = DynamoDBDocumentClient.from(client);
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
-exports.handler = (event, context) => {
-  console.log(`EVENT: ${JSON.stringify(event)}`);
-  return awsServerlessExpress.proxy(server, event, context, 'PROMISE').promise;
+exports.handler = async (event) => {
+  const { httpMethod, path } = event;
+  try {
+    if (httpMethod === 'GET' && path === '/api/all-designs') {
+      const command = new ScanCommand({ TableName: 'CrossStitchItems-prod' });
+      const response = await docClient.send(command);
+      const items = response.Items || [];
+      console.log('Scan Response:', items.length, 'items');
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(items)
+      };
+    }
+    return {
+      statusCode: 404,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Endpoint not found' })
+    };
+  } catch (error) {
+    console.error('Operation failed:', {
+      message: error.message || 'Unknown error',
+      code: error.code || 'N/A',
+      name: error.name || 'Unknown',
+      stack: error.stack || 'N/A'
+    });
+    return {
+      statusCode: 500,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Failed to process request' })
+    };
+  }
 };
