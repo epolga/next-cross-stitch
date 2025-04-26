@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     try {
         console.log('Attempting to load credentials');
         const resolvedCredentials = await credentials();
-        console.log('Credentials loaded successfully:', {
+        console.log('Credentials loaded successfully!', {
             accessKeyId: resolvedCredentials.accessKeyId ? '****' : 'undefined',
         });
 
@@ -30,7 +30,7 @@ export async function GET(request: Request) {
         const identity = await stsClient.send(stsCommand);
         console.log('Identity info:', JSON.stringify(identity));
 
-        return NextResponse.json([]);
+        return NextResponse.json(identity);
     } catch (error) {
         console.error('STS call failed:', JSON.stringify(error, null, 2));
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
