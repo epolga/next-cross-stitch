@@ -55,6 +55,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_FServerless_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "FServerless"
+        }
+      ]
+    },
+    "AMPLIFY_function_FServerless_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "FServerless"
+        }
+      ]
+    },
     "AMPLIFY_function_allDesignsApiLambda_deploymentBucketName": {
       "usedBy": [
         {

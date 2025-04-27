@@ -24,7 +24,10 @@
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
           "s3Key": "amplify-builds/testLambda-4f5245624437664a3633-build.zip"
         },
-        "FServerless": {}
+        "FServerless": {
+          "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
+          "s3Key": "amplify-builds/FServerless-596c673549725a2f3244-build.zip"
+        }
       },
       "api": {
         "crossStitchApi": {}

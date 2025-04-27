@@ -7,6 +7,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "FServerless": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "allDesignsApiLambda": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
