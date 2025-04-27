@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
-import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
+import awsExports from '../../aws-exports';
 // Custom logger for credential provider chain
 const credentialLogger = {
     info: (message: string) => console.log(`[CREDENTIALS] INFO: ${message}`),
@@ -19,6 +19,7 @@ const stsClient = new STSClient({ region: 'us-east-1', credentials });
 
 export async function GET(request: Request) {
     try {
+        console.log(awsExports.aws_dynamodb_table_schemas[0].tableName);
         console.log('Attempting to load credentials');
         const resolvedCredentials = await credentials();
         console.log('Credentials loaded successfully:', {
