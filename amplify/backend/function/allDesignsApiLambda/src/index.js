@@ -8,7 +8,7 @@ exports.handler = async (event) => {
   const { httpMethod, path } = event;
   try {
     if (httpMethod === 'GET' && path === '/api/all-designs') {
-      const command = new ScanCommand({ TableName: 'CrossStitchItems-prod' });
+      const command = new ScanCommand({ TableName: 'CrossStitchItems' });
       const response = await docClient.send(command);
       const items = response.Items || [];
       console.log('Scan Response:', items.length, 'items');

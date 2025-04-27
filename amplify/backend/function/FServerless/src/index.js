@@ -45,9 +45,9 @@ async function callApi() {
         nodeVersion: process.versions.node
     });
     try {
-        console.log('Attempting DynamoDB Scan for CrossStitchItems-prod-prod');
+        console.log('Attempting DynamoDB Scan for CrossStitchItems');
         const command = new ScanCommand({
-            TableName: 'CrossStitchItems-prod-prod',
+            TableName: 'CrossStitchItems',
         });
         const response = await docClient.send(command);
         const items = response.Items || [];
@@ -59,7 +59,7 @@ async function callApi() {
             code: error.code || 'N/A',
             name: error.name || 'Unknown',
             stack: error.stack || 'N/A',
-            tableName: 'CrossStitchItems-prod-prod',
+            tableName: 'CrossStitchItems',
             region: process.env.AWS_REGION || 'us-east-1'
         });
         throw new Error(`DynamoDB Scan failed: ${error.message || 'Unknown error'}`);

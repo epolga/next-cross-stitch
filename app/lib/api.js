@@ -33,9 +33,9 @@ export async function callApi() {
         nodeVersion: process.versions.node
     });
     try {
-        console.log('Attempting DynamoDB Scan for CrossStitchItems-prod');
+        console.log('Attempting DynamoDB Scan for CrossStitchItems');
         const command = new ScanCommand({
-            TableName: 'CrossStitchItems-prod',
+            TableName: 'CrossStitchItems',
         });
         const response = await docClient.send(command);
         const items = response.Items || [];

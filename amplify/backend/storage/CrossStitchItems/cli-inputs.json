@@ -1,6 +1,6 @@
 {
   "resourceName": "CrossStitchItems",
-  "tableName": "CrossStitchItems-prod",
+  "tableName": "CrossStitchItems",
   "partitionKey": {
     "fieldName": "PK",
     "fieldType": "string"
