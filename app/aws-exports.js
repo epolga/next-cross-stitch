@@ -6,7 +6,7 @@ const awsmobile = {
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "CrossStitchItems",
+            "tableName": "CrossStitchItems-prod",
             "region": "us-east-1"
         }
     ],

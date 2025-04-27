@@ -18,7 +18,7 @@
       "function": {
         "allDesignsApiLambda": {
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
-          "s3Key": "amplify-builds/allDesignsApiLambda-7a79655442722b324938-build.zip"
+          "s3Key": "amplify-builds/allDesignsApiLambda-726b52707743362f564d-build.zip"
         },
         "testLambda": {
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
@@ -26,7 +26,7 @@
         },
         "FServerless": {
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
-          "s3Key": "amplify-builds/FServerless-6e3138663558304a7738-build.zip"
+          "s3Key": "amplify-builds/FServerless-56654544532b4e76776e-build.zip"
         }
       },
       "api": {
