@@ -14,6 +14,11 @@ const { DynamoDBDocumentClient, ScanCommand } = require('@aws-sdk/lib-dynamodb')
 const {fromNodeProviderChain} = require("@aws-sdk/credential-providers");
 // Initialize STS client
 const stsClient = new STSClient({ region: 'us-east-1' }); // Uses Lambda execution role by default
+const AWS = require('aws-sdk');
+const fs = require('fs').promises; // Use promises for async/await
+const path = require('path');
+const {it} = require("node:test");
+const docClient = new AWS.DynamoDB.DocumentClient();
 async function getCredentials() {
     try {
         const credentials = await fromNodeProviderChain()();
@@ -45,7 +50,12 @@ async function callApi() {
         nodeVersion: process.versions.node
     });
     try {
-        console.log('Attempting DynamoDB Scan for CrossStitchItems');
+        const configPath = path.join(__dirname, 'input.json');
+        // Read and parse input.json
+        const config = JSON.parse(await fs.readFile(configPath, 'utf8'));
+        const tableName = config.tableName;
+        console.log('Attempting DynamoDB Scan for ' + tableName);
+        return tableName;
         const command = new ScanCommand({
             TableName: 'CrossStitchItems',
         });
@@ -97,7 +107,8 @@ exports.handler = async (event) => {
                 'Access-Control-Allow-Headers': '*',
             },
             body: JSON.stringify({
-                message: 'Successfully fetched credentials',
+              //  message: 'Successfully fetched credentials ' + JSON.stringify(identity),
+                message: items,
                 identity: {
                     UserId: identity.UserId,
                     Account: identity.Account,
