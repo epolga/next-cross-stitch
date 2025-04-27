@@ -26,7 +26,7 @@
         },
         "FServerless": {
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
-          "s3Key": "amplify-builds/FServerless-596c673549725a2f3244-build.zip"
+          "s3Key": "amplify-builds/FServerless-4c5130684341494a5a6f-build.zip"
         }
       },
       "api": {

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
+//import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
-import { defaultProvider } from '@aws-sdk/credential-provider-node';
+//import { defaultProvider } from '@aws-sdk/credential-provider-node';
 // Custom logger for credential provider chain
 const credentialLogger = {
     info: (message: string) => console.log(`[CREDENTIALS] INFO: ${message}`),
@@ -16,7 +16,8 @@ const credentials = defaultProvider({
     clientConfig: { region: 'us-east-1' },
 });
 const stsClient = new STSClient({ region: 'us-east-1', credentials });
-
+const STSClient = require('@aws-sdk/client-sts')
+const GetCallerIdentityCommand = require('@aws-sdk/client-sts/GetCallerIdentityCommand');
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
