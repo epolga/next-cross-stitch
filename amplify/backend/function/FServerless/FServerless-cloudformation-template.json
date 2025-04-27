@@ -69,9 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "TABLE_NAME": {
-              "Ref": "tableName"
             }
           }
         },
