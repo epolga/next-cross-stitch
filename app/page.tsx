@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { Amplify } from 'aws-amplify';
-import awsExports from '../src/aws-exports';
+import amplifyConfig from '../app/amplifyconfiguration.json';
 
 interface Design {
 
@@ -18,10 +18,10 @@ interface Design {
     NPage: number;
 }
 
-Amplify.configure(awsExports);
+Amplify.configure(amplifyConfig);
 
 export default function Home() {
-    const tableName = process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || awsExports.aws_dynamodb_table_schemas[0].tableName;
+    const tableName = process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || amplifyConfig.aws_dynamodb_table_schemas[0].tableName;
 
     return (
         <div>
