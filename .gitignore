@@ -81,4 +81,4 @@ amplifytools.xcconfig
 
 # Allow specific Amplify configuration files
 !amplify/backend/api/*/parameters.json
-!app/aws-exports.js
+!src/aws-exports.js

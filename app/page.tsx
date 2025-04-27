@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import { Amplify } from 'aws-amplify';
+import awsExports from '../src/aws-exports';
 
 interface Design {
 
@@ -16,6 +18,18 @@ interface Design {
     NPage: number;
 }
 
+Amplify.configure(awsExports);
+
+export default function Home() {
+    const tableName = process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || awsExports.aws_dynamodb_table_name;
+
+    return (
+        <div>
+            <h1>DynamoDB Table: {tableName}</h1>
+        </div>
+    );
+}
+/*
 export default function Home() {
     const [designs, setDesigns] = useState<Design[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -61,3 +75,4 @@ export default function Home() {
         </div>
     );
 }
+*/

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
-import awsExports from '../../aws-exports';
+import awsExports from '../../../src/aws-exports';
 // Custom logger for credential provider chain
 const credentialLogger = {
     info: (message: string) => console.log(`[CREDENTIALS] INFO: ${message}`),
