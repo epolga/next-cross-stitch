@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Amplify } from "aws-amplify";
-import amplifyConfig from "../app/amplifyconfiguration.json"; // Adjust path as needed
+import amplifyConfig from "./amplifyconfiguration.json"; // Adjust path as needed
 import styles from "./page.module.css";
 
 // Optional: Define the Design interface if you plan to use it later
