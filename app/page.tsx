@@ -21,8 +21,12 @@ interface Design {
 
 
 export default function Home() {
-    Amplify.configure(amplifyConfig);
-    let tableName =  process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || amplifyConfig.aws_dynamodb_table_schemas[0].tableName;
+   // Amplify.configure(amplifyConfig);
+
+
+    let tableName =  process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME ||
+        amplifyConfig.aws_dynamodb_table_schemas?.[0]?.tableName ||
+        "Unknown";
 
     return (
         <div>
