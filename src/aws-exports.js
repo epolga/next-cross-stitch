@@ -6,7 +6,7 @@ const awsExports = {
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "CrossStitchItems-prod",
+            "tableName": "CrossStitchItems-prod2",
             "region": "us-east-1"
         }
     ],
