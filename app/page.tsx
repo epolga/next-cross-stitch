@@ -19,17 +19,27 @@ interface Design {
     NPage: number;
 }
 
-
 export default function Home() {
-   // Amplify.configure(amplifyConfig);
+    const [tableName, setTableName] = useState<string>("");
 
+    useEffect(() => {
+        // Configure Amplify only once when the component mounts
+        try {
+            Amplify.configure(amplifyConfig);
 
-    let tableName =  process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME ||
-        amplifyConfig.aws_dynamodb_table_schemas?.[0]?.tableName ||
-        "Unknown";
+            // Safely access tableName from amplifyConfig
+            const name =
+                process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME ||
+                (amplifyConfig.aws_dynamodb_table_schemas?.[0]?.tableName ?? "Unknown");
+            setTableName(name);
+        } catch (error) {
+            console.error("Error configuring Amplify or accessing tableName:", error);
+            setTableName("Error");
+        }
+    }, []); // Empty dependency array ensures this runs once on mount
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>DynamoDB Table: {tableName}</h1>
         </div>
     );
