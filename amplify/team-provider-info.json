@@ -32,9 +32,6 @@
           "deploymentBucketName": "amplify-nextcrossstitch-prod-350c4-deployment",
           "s3Key": "amplify-builds/allDesignsPaged-7935304f467075356d2f-build.zip"
         }
-      },
-      "api": {
-        "crossStitchApi": {}
       }
     }
   }

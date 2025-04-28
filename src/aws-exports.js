@@ -9,13 +9,6 @@ const awsExports = {
             "tableName": "CrossStitchItems-prod",
             "region": "us-east-1"
         }
-    ],
-    "aws_cloud_logic_custom": [
-        {
-            "name": "crossStitchApi",
-            "endpoint": "https://yzwjk7u3xk.execute-api.us-east-1.amazonaws.com/prod",
-            "region": "us-east-1"
-        }
     ]
 };
 
