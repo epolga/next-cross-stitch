@@ -36,7 +36,7 @@ export default function Home() {
     }
     return (
         <div>
-            <h1>DynamoDB Table: {tableName}</h1>
+            <h1>DynamoDB Table: "abc"</h1>
         </div>
     );
 }
