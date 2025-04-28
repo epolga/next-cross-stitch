@@ -21,11 +21,22 @@ interface Design {
 //Amplify.configure(awsExports);
 
 export default function Home() {
-    const tableName = process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || awsExports.aws_dynamodb_table_schemas[0].tableName;
-
+    let tableName = process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME || awsExports.aws_dynamodb_table_schemas[0].tableName;
+    if(!process.env.NEXT_PUBLIC_DYNAMODB_TABLE_NAME)
+    {
+        tableName = "!DYNAMODB_TABLE_NAME";
+    }
+    if(awsExports.aws_dynamodb_table_schemas.length = 0)
+    {
+        tableName = "awsExports.aws_dynamodb_table_schemas.length = 0";
+    }
+    else {
+        if(!awsExports.aws_dynamodb_table_schemas[0].tableName)
+            tableName = "!awsExports.aws_dynamodb_table_schemas[0].tableName";
+    }
     return (
         <div>
-            <h1>DynamoDB Table: {"abc"}</h1>
+            <h1>DynamoDB Table: {tableName}</h1>
         </div>
     );
 }
